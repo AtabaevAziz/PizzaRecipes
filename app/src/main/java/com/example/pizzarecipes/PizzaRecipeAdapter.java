@@ -1,35 +1,52 @@
 package com.example.pizzarecipes;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.ArrayList;
 
-public class PizzaRecipeAdapter extends RecyclerView.Adapter {
+public class PizzaRecipeAdapter extends RecyclerView.Adapter<PizzaRecipeAdapter.PizzaRecipeViewHolder> {
+
+    ArrayList<PizzaRecipeItem> pizzaRecipeItems;
+    Context context;
+
+    public PizzaRecipeAdapter(ArrayList<PizzaRecipeItem> pizzaRecipeItems,
+                              Context context) {
+        this.pizzaRecipeItems = pizzaRecipeItems;
+        this.context = context;
+    }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pizza_pecipe_item,
-                viewGroup, false);
+    public PizzaRecipeAdapter.PizzaRecipeViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pizza_recipe_item,
+                viewGroup,false);
         PizzaRecipeViewHolder pizzaRecipeViewHolder = new PizzaRecipeViewHolder(view);
         return pizzaRecipeViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull PizzaRecipeViewHolder viewHolder, int i) {
+        PizzaRecipeItem pizzaRecipeItem = pizzaRecipeItems.get(i);
 
+        viewHolder.pizzaImageView.setImageResource(pizzaRecipeItem.getImageResource());
+        viewHolder.title.setText(pizzaRecipeItem.getTitle());
+        viewHolder.description.setText(pizzaRecipeItem.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return pizzaRecipeItems.size();
     }
 
-    public static class PizzaRecipeViewHolder extends RecyclerView.ViewHolder {
+    class PizzaRecipeViewHolder extends RecyclerView.ViewHolder implements
+            View.OnClickListener {
 
         public ImageView pizzaImageView;
         public TextView title;
@@ -37,6 +54,18 @@ public class PizzaRecipeAdapter extends RecyclerView.Adapter {
 
         public PizzaRecipeViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
+
+            pizzaImageView = itemView.findViewById(R.id.pizzaImageView);
+            title = itemView.findViewById(R.id.titleTextView);
+            description = itemView.findViewById(R.id.descriptionTextView);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            int position = getAdapterPosition();
+            PizzaRecipeItem pizzaRecipeItem = pizzaRecipeItems.get(position);
         }
     }
 }
