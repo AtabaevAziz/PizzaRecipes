@@ -34,7 +34,7 @@ public class Utils {
             "\n" +
             "Drain the mozzarella, then pat dry with kitchen paper. Brush the dough with olive oil, then spread half the sauce over, almost up to the edge. Scatter over half the basil, then tear up one mozzarella ball and scatter over the basil (pic 3). Grate over pepper and drizzle with a little oil. Bake for 12-15 mins, until the topping is bubbling and the dough is going brown. Repeat with the remaining dough and toppings. To serve, scatter with parmesan shavings, rocket leaves and drizzle with oil.";
 
-    public static final String PIZZA_4_TITLE = "pizza_4.jpg";
+    public static final String PIZZA_4_TITLE = "Pork, gorgonzola & garlic butter pizza";
     public static final String PIZZA_4_DESCRIPTION = "Garlic butter, salty blue cheese, peppery rocket and a kick of chilli – these pizzas are loaded with flavour. Try making them for an indulgent weekend dinner";
     public static final String PIZZA_4_RECIPE = "To make the dough, put the flour, yeast and 1 tsp salt into the bowl of an electric mixer with a dough hook. On a medium speed, gradually pour in the oil and 200ml warm water to make a dough. Alternatively, mix by hand and knead on a floured surface. Cover the bowl with cling film and prove for 1 hr or until doubled in size.\n" +
             "\n" +
